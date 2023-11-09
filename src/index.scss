@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// style antd
+
+.ant-form-item-control {
+  max-width: 100%;
+}
+.ant-form-item-control-input-content {
+
+}
+
+.ant-dropdown {
+  width: 160px;
+}
