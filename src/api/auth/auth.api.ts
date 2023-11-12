@@ -13,3 +13,7 @@ export const registerRequest = (
 ): Promise<AxiosResponse<LoginResponse>> => {
   return requestWithoutJwt.post<LoginResponse>("/auth/register", params);
 };
+
+export const loginGoogleRequest = (): Promise<AxiosResponse<LoginResponse>> => {
+  return requestWithoutJwt.get<LoginResponse>("/auth/google");
+};

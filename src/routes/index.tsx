@@ -8,6 +8,7 @@ import Loading from "../containers/loadable-fallback/loading";
 import NotFound from "../containers/not-found";
 import ROUTES from "./constant";
 import LayoutDefault from "../containers/layouts/default";
+import Refreshed from "containers/refreshed";
 /**
  * Lazy load page components. Fallback to <Loading /> when in loading phase
  */
@@ -35,6 +36,10 @@ export const routes: RouteObject[] = [
   {
     path: ROUTES.register,
     element: <Register />,
+  },
+  {
+    path: ROUTES.refreshed,
+    element: <Refreshed />,
   },
   {
     path: ROUTES.home,

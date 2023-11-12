@@ -11,7 +11,7 @@ import { getFromSessionStorage } from "../utils/functions";
  */
 export const requestWithJwt = axios.create({
   baseURL: process.env.REACT_APP_API,
-  withCredentials: false,
+  withCredentials: true,
 });
 
 requestWithJwt.interceptors.request.use(async (config: any) => {
@@ -49,7 +49,7 @@ requestWithJwt.interceptors.response.use(
  */
 export const requestWithoutJwt = axios.create({
   baseURL: process.env.REACT_APP_API,
-  withCredentials: false,
+  withCredentials: true,
 });
 
 requestWithoutJwt.interceptors.response.use(

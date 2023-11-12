@@ -20,6 +20,7 @@ const ROUTES = {
   calculator: "calculator",
   login: "/login",
   register: "/register",
+  refreshed: "/refreshed",
   userProfile: "user-profile",
   notfound: "*",
 };

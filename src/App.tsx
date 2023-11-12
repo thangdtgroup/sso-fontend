@@ -1,6 +1,7 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { message } from "antd";
 import { useEffect } from "react";
+import { CookiesProvider } from "react-cookie";
 import { useRoutes, BrowserRouter } from "react-router-dom";
 import routes from "./routes";
 import store, { Provider } from "./store";

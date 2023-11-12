@@ -16,6 +16,7 @@ import { useAppDispatch } from "../../hooks/storeHook";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/constant";
 import GoogleLoginAuth from "../auth/GoogleAuth";
+import { loginGoogleRequest } from "api/auth/auth.api";
 
 const Login: FC = () => {
   const loading = useSelector((state: TStore) => state.auth.loading);
@@ -72,6 +73,13 @@ const Login: FC = () => {
   const navigateLink = useCallback(() => {
     navigate(ROUTES.register);
   }, [navigate]);
+
+  const navigateAuthGoogle = useCallback(() => {
+    window.open("http://localhost:8000/api/v1/auth/google", "_self");
+    // loginGoogleRequest()
+    //   .then((res) => console.log(res))
+    //   .catch((e: Error) => console.log(e));
+  }, []);
 
   return (
     <>
@@ -138,7 +146,7 @@ const Login: FC = () => {
             </Button>
             <Button
               className="flex justify-center items-center shadow-3xl border-1 border-[#d8d6d4] border-solid px-[0.75rem] py-[0.5rem] h-10"
-              onClick={() => googleLogin()}
+              onClick={() => navigateAuthGoogle()}
             >
               <img className="mr-[0.75rem]" src={IcLogoGoogle} alt="" />
               <span className="text-sm">Sign in with Google</span>

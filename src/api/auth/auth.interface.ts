@@ -13,6 +13,8 @@ export interface LoginUserInfo {
   _id: string;
   name: string;
   username: string;
+  firstName?: string;
+  lastName?: string;
   employeeName: string;
   role: string;
   email: string;

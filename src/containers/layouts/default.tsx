@@ -14,26 +14,21 @@ import { Content, Header } from "antd/es/layout/layout";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 import MenuComponent from "./MenuComponent";
-import Navbar from "./navbar/navbar";
 import { actions, TStore, useSelector } from "../../store";
 import { useAppDispatch } from "../../hooks/storeHook";
 import useSessionStorage from "../../hooks/useSessionStorage";
 const Default = () => {
   const userInfo = useSelector((state: TStore) => state.auth.userInfo);
-  const [refreshToken, setRefreshToken] = useSessionStorage<string | null>(
+  const [_, setRefreshToken] = useSessionStorage<string | null>(
     "__token",
     null
   );
 
   const [collapsed, setcollapsed] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const handleChangeCollapsed = useCallback(() => {
     setcollapsed(!collapsed);
@@ -43,7 +38,7 @@ const Default = () => {
       {
         label: (
           <p className="flex flex-col">
-            <span className="font-bold">{userInfo?.username || ""}</span>
+            <span className="font-bold">{userInfo?.username}</span>
             <span>{userInfo?.email || ""}</span>
           </p>
         ),
@@ -96,7 +91,10 @@ const Default = () => {
             />
             <Dropdown menu={menuProps} trigger={["click"]}>
               <div className="flex gap-2 items-center cursor-pointer">
-                <p className="font-bold">{userInfo?.username}</p>
+                <p className="font-bold">
+                  {userInfo?.username ||
+                    `${userInfo?.firstName} ${userInfo?.lastName}`}
+                </p>
                 <Avatar
                   // onClick={() => e.preventDefault()}
                   size={40}
