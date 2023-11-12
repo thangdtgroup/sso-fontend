@@ -41,7 +41,12 @@ const Default = () => {
   const items: MenuProps["items"] = useMemo(() => {
     return [
       {
-        label: <p className="text-xl">{userInfo?.username || ""}</p>,
+        label: (
+          <p className="flex flex-col">
+            <span className="font-bold">{userInfo?.username || ""}</span>
+            <span>{userInfo?.email || ""}</span>
+          </p>
+        ),
         key: "0",
       },
       {
@@ -56,7 +61,7 @@ const Default = () => {
         key: "2",
       },
     ];
-  }, [userInfo?.username]);
+  }, [userInfo?.email, userInfo?.username]);
 
   const handleMenuClick: MenuProps["onClick"] = (e) => {
     if (e.key === "2") {
@@ -93,7 +98,6 @@ const Default = () => {
               <div className="flex gap-2 items-center cursor-pointer">
                 <p className="font-bold">{userInfo?.username}</p>
                 <Avatar
-                  className="cus"
                   // onClick={() => e.preventDefault()}
                   size={40}
                   icon={<UserOutlined />}

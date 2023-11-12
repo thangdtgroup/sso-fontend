@@ -15,6 +15,7 @@ import { actions, TStore } from "../../store";
 import { useAppDispatch } from "../../hooks/storeHook";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/constant";
+import GoogleLoginAuth from "../auth/GoogleAuth";
 
 const Login: FC = () => {
   const loading = useSelector((state: TStore) => state.auth.loading);
@@ -24,14 +25,14 @@ const Login: FC = () => {
   const googleLogin = useGoogleLogin({
     flow: "implicit",
     onSuccess: async (codeResponse) => {
-      console.log(codeResponse);
-      const userInfo = await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${codeResponse.access_token}` },
-        })
-        .then((res) => res.data);
+      console.log(codeResponse.access_token);
+      // const userInfo = await axios
+      //   .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+      //     headers: { Authorization: `Bearer ${codeResponse.access_token}` },
+      //   })
+      //   .then((res) => res.data);
 
-      console.log(userInfo);
+      // console.log(userInfo);
       // axios
       //   .post('http://localhost:8000/api/v1/auth/login-google', {
       //     token: codeResponse.expires_in,
